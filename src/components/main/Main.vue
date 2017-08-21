@@ -2,7 +2,7 @@
 	<div class="main-wrap">
 		<VueScrollbar>
 			<div class="sidebar">
-				<v-input :value="12345" :autofocus="false">
+				<v-input :value="12345" :autofocus="false" >
 					<div slot="prepend">this is prepend content</div>
 					<div slot="append">this is append content</div>
 				</v-input>

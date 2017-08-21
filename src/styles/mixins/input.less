@@ -27,6 +27,17 @@
 	}
 }
 
+.input-large(){
+	padding: @input-padding-vertical-large @input-padding-horizontal;
+	height: @input-height-large;
+	font-size: @font-size-base;
+}
+.input-small(){
+	padding: @input-padding-vertical-small @input-padding-horizontal;
+	height: @input-height-small;
+	border-radius: @btn-border-radius-small;
+}
+
 .input() {
 	display: inline-block;
 	position: relative;
@@ -57,5 +68,13 @@
 	&[disabled],
 	fieldset[disabled] &{
 		.disabled();
+	}
+
+	&-large{
+		.input-large();
+	}
+
+	&-small{
+		.input-small()
 	}
 }
