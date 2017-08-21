@@ -9,7 +9,7 @@ function resolve (dir) {
 
 module.exports = {
   entry: {
-    app: ['babel-polyfill', './src/main.js']
+    app: './src/main.js'
   },
   output: {
     path: config.build.assetsRoot,
@@ -28,14 +28,6 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        test: /\.css$/,
-        loader: 'style!css'
-      },
-      {
-        test: /\.less$/,
-        loader: 'style!css!less'
-      },
       {
         test: /\.(js|vue)$/,
         loader: 'eslint-loader',

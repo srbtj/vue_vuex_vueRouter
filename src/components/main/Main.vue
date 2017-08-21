@@ -2,7 +2,10 @@
 	<div class="main-wrap">
 		<VueScrollbar>
 			<div class="sidebar">
-				<div v-for="item in items">{{ item }}</div>
+				<v-input :value="12345" :autofocus="false">
+					<div slot="prepend">this is prepend content</div>
+					<div slot="append">this is append content</div>
+				</v-input>
 			</div>
 			<div class="container">这是内容模块</div>
 		</VueScrollbar>
@@ -10,9 +13,13 @@
 </template>
 <script type="text/ecmascript-6">
 	import VueScrollbar from '../common/vueScroll/VueScrollbar'
+	import Input from 'components/common/input'
 	export default{
 		name: 'main',
-		components: { VueScrollbar },
+		components: {
+			VueScrollbar,
+			'v-input': Input
+		},
 		data () {
 			return {
 				items: []
@@ -24,9 +31,7 @@
 			}
 		},
 		mounted () {
-			for (let i = 0; i < 100; i++) {
-				this.items.push(i)
-			}
+
 		}
 	}
 </script>

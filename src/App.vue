@@ -18,20 +18,10 @@ export default {
 }
 </script>
 <style>
-html,
-body{
-  height: 100%;
-}
-body{
-  margin: 0;
-  padding: 0;
-}
 #app{
   min-height: 100%;
   height: auto !important;
   height: 100%;
   position: relative;
 }
-
-.padLR: 0 15px;
 </style>
