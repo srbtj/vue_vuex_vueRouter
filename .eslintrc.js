@@ -27,6 +27,7 @@ module.exports = {
     'no-tabs': 0,
     'indent': 0,
     'spaced-comment': 0,
-    'eqeqeq': 0
+    'eqeqeq': 0,
+    'no-mixed-spaces-and-tabs': 0
   }
 }

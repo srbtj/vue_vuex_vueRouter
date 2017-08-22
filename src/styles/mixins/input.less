@@ -37,7 +37,12 @@
 	height: @input-height-small;
 	border-radius: @btn-border-radius-small;
 }
-
+/**
+	设置输入框样式
+	1. 基本样式
+	2. 动态样式  focus or hover
+	3. 指定样式
+*/
 .input() {
 	display: inline-block;
 	position: relative;
@@ -76,5 +81,114 @@
 
 	&-small{
 		.input-small()
+	}
+}
+
+/**
+	复合型输入框  通过在输入框前或后增加指定的元素，使其成为一个组
+	.v-input-group
+**/
+.input-group(@inputClass){  //@inputClass: .v-input
+	display: table;
+	border-collapse: separate; // 为表格设置合并模型  separate 不会忽略 border-spacing empty-cells   collapse  会忽略 border-spacing empty-cells
+	position: relative;
+	width: 100%;
+	font-size: @font-size-small; // 12px;
+	top: 1px;
+
+	&-large{
+		font-size: @font-size-base; // 14px;
+	}
+	// 选择类中包含 col 的元素
+	&[class*="col-"]{
+		float: none;
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	// 选择子元素中 类中包含 col- 的元素
+	> [class*="col-"]{
+		padding-right: 8px;
+	}
+
+	// 设置子元素的布局方式：table-cell
+	&-prepend,
+	&-append,
+	> .@{inputClass}
+	{
+		display: table-cell;
+	}
+
+	// 消除输入框的圆角
+	&-with-prepend .@{inputClass}{
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+	}
+
+	&-with-append .@{inputClass}{
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+
+	// 设置 v-input-group-btn 样式
+	&-prepend .@{css-prefix}btn,
+	&-append .@{css-prefix}btn{
+		border-color: transparent;
+		background-color: transparent;
+		color: inherit;
+		margin: -(@input-padding-vertical-base + 1) (-@input-padding-horizontal);
+	}
+
+	.@{inputClass}{
+		width: 100%;
+		float: left;
+		margin-bottom: 0;
+		z-index: 2;
+	}
+
+	// 除输入框外的元素，宽度由内容撑开并且文字不换行， 余下的所有宽度给输入框
+	&-prepend,
+	&-append{
+		width: 1px; // 此处宽设置为1px的作用：元素的宽度由内容撑开, 其它的宽度分给input输入框
+		white-space: nowrap;
+		vertical-align: middle;
+	}
+
+	// 设置复合框中除input外的样式
+	&-prepend,
+	&-append{
+		padding: @input-padding-vertical-base @input-padding-horizontal;
+		font-size: inherit;
+		font-weight: normal;
+		line-height: 1;
+		color: @input-color;
+		text-align: center;
+		background-color: #eee;
+		border: 1px solid @input-border-color;
+		border-radius: @border-radius-base;
+	}
+
+	&-prepend{
+		border-right: 0;
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+
+	&-append{
+		border-left: 0;
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+	}
+
+	&-large .@{inputClass},
+	&-large > &-prepend,
+	&-large > &-append{
+		.input-large();
+	}
+
+	&-small .@{inputClass},
+	&-small > &-prepend,
+	&-small > &-append{
+		.input-small();
 	}
 }

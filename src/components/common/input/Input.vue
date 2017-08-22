@@ -2,6 +2,7 @@
 <template>
 	<div :class="wrapClasses">
 		<div :class="[prefixCls + '-group-prepend']" v-if="prepend" v-show="slotReady"><slot name="prepend"></slot></div>
+		<i class="v-icon" :class="['v-icon-' + icon, prefixCls + '-icon', prefixCls + '-icon-normal']" v-if="icon" @click="handleClick"></i>
 		<input
 			ref="input"
 			:class="inputClasses"
@@ -42,7 +43,9 @@
 				}
 			},
 			type: {
-				type: String,
+				validator (value) {
+					return oneOf(['text', 'password'], value)
+				},
 				default: 'text'
 			},
 			value: {
@@ -64,7 +67,8 @@
 			number: {
 				type: Boolean,
 				default: false
-			}
+			},
+			icon: String
 		},
 		data () {
 			return {
@@ -133,6 +137,10 @@
 				if (!findComponentUpward(this, ['DatePicker', 'TimePicker', 'Cascader', 'Search'])) {
 					// this.dispatch('FormItem', 'on-form-change', val)
 				}
+			},
+			handleClick (event) {
+				console.log('handle click ...')
+				this.$emit('on-click', event)
 			}
 		},
 		watch: {
