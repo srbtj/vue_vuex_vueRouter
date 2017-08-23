@@ -3,6 +3,8 @@ import Router from 'vue-router'
 // import Hello from '@/components/Hello'
 import Main from 'components/main'
 import inputComponent from 'components/children/inputComponent'
+import radioComponent from 'components/children/radioComponent'
+
 Vue.use(Router)
 
 let router = new Router({
@@ -22,7 +24,7 @@ let router = new Router({
 			},
 			{
 				path: 'radio',
-				component: Main
+				component: radioComponent
 			}
 		]
 	}]

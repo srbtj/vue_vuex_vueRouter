@@ -26,3 +26,44 @@ export function findComponentUpward (context, componentName, componentNames) {
 	}
 	return parent
 }
+
+/**
+	向下查找指定name的子组件
+**/
+export function findComponentDownward (content, componentName) {
+	// 获取当前实例的直接子组件
+	let childrens = content.$children
+	let children = null
+
+	if (childrens.length) {
+		childrens.forEach((child) => {
+			let name = child.$options.name
+			if (name == componentName) {
+				children = child
+			}
+		})
+	}
+	return children
+}
+
+/**
+	向下查找所有子组件
+**/
+export function findComponentsDownward (content, componentName, components = []) {
+	let childrens = content.$children
+
+	if (childrens.length) {
+		childrens.forEach(child => {
+			let name = child.$options.name
+			let childs = child.$children
+
+			if (name === componentName) components.push(child)
+
+			if (childs.length) {
+				let findChild = findComponentsDownward(child, componentName, components)
+				if (findChild) components.concat(findChild)
+			}
+		})
+	}
+	return components
+}

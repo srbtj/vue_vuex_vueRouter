@@ -25,9 +25,11 @@
 </template>
 <script>
 	import { oneOf, findComponentUpward } from '@/utils/assist'
+	import Emitter from '@/mixins/emitter'
 	let prefixCls = 'v-input'
 	export default{
 		name: 'vInput',
+		mixins: [Emitter],
 		props: {
 			placeholder: {
 				type: String,
@@ -109,7 +111,7 @@
 			handleBlur (event) {
 				this.$emit('on-blur', event)
 				if (!findComponentUpward(this, ['DatePicker', 'TimePicker', 'Cascader', 'Search'])) {
-					// this.dispatch('FormItem', 'on-form-blur', this.currentValue)
+					this.dispatch('FormItem', 'on-form-blur', this.currentValue)
 				}
 			},
 			/**
@@ -135,7 +137,7 @@
 				this.currentValue = val
 
 				if (!findComponentUpward(this, ['DatePicker', 'TimePicker', 'Cascader', 'Search'])) {
-					// this.dispatch('FormItem', 'on-form-change', val)
+					this.dispatch('FormItem', 'on-form-change', val)
 				}
 			},
 			handleClick (event) {
