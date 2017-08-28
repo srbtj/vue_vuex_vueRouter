@@ -4,6 +4,7 @@ import Router from 'vue-router'
 import Main from 'components/main'
 import inputComponent from 'components/children/inputComponent'
 import radioComponent from 'components/children/radioComponent'
+import spinComponent from 'components/children/spinComponent'
 
 Vue.use(Router)
 
@@ -25,6 +26,10 @@ let router = new Router({
 			{
 				path: 'radio',
 				component: radioComponent
+			},
+			{
+				path: 'spin',
+				component: spinComponent
 			}
 		]
 	}]

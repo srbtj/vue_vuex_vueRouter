@@ -33,6 +33,10 @@
 		{
 			path: 'radio',
 			text: 'radio组件'
+		},
+		{
+			path: 'spin',
+			text: 'spin组件'
 		}
 	]
 	export default{
