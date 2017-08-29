@@ -14,8 +14,11 @@
 						<router-link :to="item.path" class="link-item">{{ item.text }}</router-link>
 					</li>
 				</ul>
+
 			</div>
 			<div class="container">
+
+				<span v-clickoutside>11111</span>
 				<router-view></router-view>
 			</div>
 		</VueScrollbar>
@@ -24,6 +27,7 @@
 <script type="text/ecmascript-6">
 	import VueScrollbar from '../common/vueScroll/VueScrollbar'
 	import Input from 'components/common/input'
+	import clickoutside from '@/directives/clickoutside'
 
 	let datas = [
 		{
@@ -45,6 +49,7 @@
 			VueScrollbar,
 			'v-input': Input
 		},
+		directives: { clickoutside },
 		data () {
 			return {
 				items: datas
